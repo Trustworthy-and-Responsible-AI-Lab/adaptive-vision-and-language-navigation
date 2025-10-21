@@ -1,3 +1,4 @@
+
 ## Harnessing Input-Adaptive Inference for Efficient VLN - Standard VLN Experiments
 
 This directory contains the code for reproducing our standard VLN results on [HAMT](https://arxiv.org/abs/2110.13309) and [DUET](https://arxiv.org/abs/2202.11742).
@@ -14,14 +15,12 @@ This directory contains the code for reproducing our standard VLN results on [HA
 
 2. Follow the installation instructions provided in the [DUET](https://github.com/cshizhe/VLN-DUET) repository to download the necessary data. **You only need to do steps 2–4**. Store the data in `DUET/datasets`.
 
-3. Create the panorama images:
+3. Install the base ViT weights for DUET:
 
 ```bash
-cd HAMT/preprocess
-python build_image_lmdb.py
+cd DUET/datasets/R2R/trained_models
+wget https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_224-80ecf9dd.pth
 ```
-
-Note: By default, the images will be stored at: `Standard-VLN/panos/clean/panoimages.lmdb`. Set the global path in the `.env` file for future experiments.
 
 4. Install other dependencies:
 
@@ -29,6 +28,15 @@ Note: By default, the images will be stored at: `Standard-VLN/panos/clean/panoim
 pip install git+https://github.com/ztcoalson/thop.git
 pip install dotenv
 ```
+
+5. Create the panorama images:
+
+```bash
+cd HAMT/preprocess
+python build_image_lmdb.py
+```
+
+Note: By default, the images will be stored at: `Standard-VLN/panos/clean/panoimages.lmdb`. Set the global path in the `.env` file for future experiments.
 
 &nbsp;
 
